@@ -1,16 +1,34 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import { Customer } from '../../../models/customer/customer';
-import { CustomerFormViewProps } from './customer-form-view-props-state';
+import { CustomerFormViewProps, CustomerFormViewState } from './customer-form-view-props-state';
 import customerValidator from '../../../business-rules/validate-customer';
 
-class CustomerFormView extends React.Component<CustomerFormViewProps, Customer> {
+class CustomerFormView extends React.Component<CustomerFormViewProps, CustomerFormViewState> {
     constructor(props: CustomerFormViewProps) {
         super(props);
-        this.state = { name: '', email: '' };
+        this.state = { name: '', email: '', isEdit: false };
+
+        // Event Handler's
         this.handleEvent = this.handleEvent.bind(this);
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
 
+    }
+    componentDidMount() {
+        const {match} = this.props;
+
+        const name = match && match.params && match.params.name;
+        if (name) {
+            this.props.editCustomer(name);
+        }
+    }
+    componentWillReceiveProps(nextProps: CustomerFormViewProps) {
+        const customerInfo = nextProps.customerInfo;
+        if (customerInfo) {
+            this.bindCustomerInfo(customerInfo.name, customerInfo.email);
+        }
+    }
+    componentWillUnmount() {
+        this.props.clearStore();
     }
     render(): JSX.Element {
         return (
@@ -51,9 +69,10 @@ class CustomerFormView extends React.Component<CustomerFormViewProps, Customer> 
                         <div className="col-md-4 mb-3">
                             <button 
                                 type="button" 
-                                onClick={(): void => this.handleOnSubmit()}
                                 className="btn btn-primary"
-                            >Submit
+                                disabled={this.state.isEdit}
+                                onClick={(): void => this.handleOnSubmit()}
+                            >{this.state.isEdit ? 'Update' : 'Save'}
                             </button>
                         </div>
                     </div>
@@ -93,16 +112,20 @@ class CustomerFormView extends React.Component<CustomerFormViewProps, Customer> 
         if (result) {
 
             // validate customer name
-            result.name && result.name.map((val: any) => {
+            result.name && result.name.forEach((val: any) => {
                 validateMsg += (val + '\n');
-            })
+            });
 
             // validate email
-            result.email && result.email.map((val: any) => {
+            result.email && result.email.forEach((val: any) => {
                 validateMsg += (val + '\n');
-            })
+            });
         }
         return validateMsg;
+    }
+
+    private bindCustomerInfo(name: string, email: string) {
+        this.setState({name: name, email: email, isEdit: true});
     }
 }
 

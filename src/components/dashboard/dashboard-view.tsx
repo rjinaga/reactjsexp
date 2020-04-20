@@ -3,9 +3,9 @@ import React from 'react';
 class DashboardView extends React.Component {
     render () {
         return (
-            <div className="jumbotron text-center">
-                <h1>Welcome to Dashboard</h1>
-          </div>
+            <div className="jumbotron">
+                <h3>Dashboard</h3>
+            </div>
         );
     }
 }

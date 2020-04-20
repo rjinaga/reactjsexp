@@ -1,1 +1,1 @@
-export let webServiceUrl = 'http://localhost:3600';
+export const webServiceUrl = 'http://localhost:3600';

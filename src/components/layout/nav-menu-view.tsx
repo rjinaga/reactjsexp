@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom';
 
 /** view component */
 class NavMenuView extends React.Component<NavMenuViewProps> {
-    constructor(props: NavMenuViewProps) {
-        super(props);
-
-        // Event Handler's
-    }
+ 
     render(): JSX.Element {
         return (
             <nav className="col-md-2 d-none d-md-block bg-light sidebar" style={{ height: '600px' }}>

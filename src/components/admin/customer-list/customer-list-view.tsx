@@ -1,6 +1,7 @@
 import React from 'react';
 import { Customer } from '../../../models/customer/customer';
 import { CustomerListViewProps } from './customer-list-props-state';
+import { Link } from 'react-router-dom';
 
 class CustomerListView extends React.Component<CustomerListViewProps, {customers: Customer[]}> {
     constructor(props: CustomerListViewProps) {
@@ -32,11 +33,17 @@ class CustomerListView extends React.Component<CustomerListViewProps, {customers
                                     <td>{customer.name}</td>
                                     <td>{customer.email}</td>
                                     <td>
+                                        <Link
+                                            to={'/edit-customer/' + customer.name}
+                                            title="Edit"
+                                        >
                                         <button 
                                             type="button" 
                                             className="btn btn-info"
-                                        >Edit
-                                        </button>&nbsp;
+                                        >
+                                            Edit
+                                        </button>
+                                        </Link>&nbsp;
                                         <button 
                                             type="button" 
                                             className="btn btn-danger"
