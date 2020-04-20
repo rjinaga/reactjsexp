@@ -1,6 +1,7 @@
-import { CustomerStoreModels } from './store-models/customer-models';
+import { CustomerStoreModel } from './store-models/customer-model';
 
-export default interface ApplicationState {
-    customer: CustomerStoreModels;
-// eslint-disable-next-line semi
+interface ApplicationState {
+    customer: CustomerStoreModel;
 }
+
+export default ApplicationState;

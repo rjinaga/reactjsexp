@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {connect} from 'react-redux';
 import CustomerFormView from './customer-form-view';
 import { Customer } from '../../../models/customer/customer';
 import * as CustomerApi from '../../../services/customer-api';
 import ApplicationState from '../../../store/application-state';
 import { GET_CUSTOMER_INFO } from '../../../store/customer-reducer';
+import { Dispatch } from '../../../types/common';
 
-type Dispatch = (action: any) => void;
 
 const onSubmit = async (customer: Customer) => {
     const { error } = await CustomerApi.createCustomer(customer);
@@ -14,7 +15,10 @@ const onSubmit = async (customer: Customer) => {
 
 const editCustomer = (name: string) => {
     return async (dispatch: Dispatch) => {
-        let {data} = await CustomerApi.getCustomerList({});
+        /** TODO: need to change this api to getSpecific customer 
+         *  Used temporarily for testing
+        */
+        const {data} = await CustomerApi.getCustomerList({});
         if (data) {
             dispatch({type: GET_CUSTOMER_INFO, data: data[0]});
         }
@@ -41,6 +45,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     };
 };
 
+// The connect() function connects a React component to a Redux store.
 const CustomerContainer = 
     connect(mapStateToProps, mapDispatchToProps)(CustomerFormView);
 

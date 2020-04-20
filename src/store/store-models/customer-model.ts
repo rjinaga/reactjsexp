@@ -1,5 +1,5 @@
 import { Customer } from '../../models/customer/customer';
 
-export interface CustomerStoreModels {
+export interface CustomerStoreModel {
     customerInfo: Customer;
 };

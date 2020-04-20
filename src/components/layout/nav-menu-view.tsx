@@ -11,8 +11,8 @@ class NavMenuView extends React.Component<NavMenuViewProps> {
                     <ul className="nav flex-column">
                         {this.props.menu.map(menuItem => {
                             return (
-                                <li className="nav-item" key={menuItem.name}>
-                                    <a className="nav-link">
+                                <li className="nav-item " key={menuItem.name}>
+                                    <button className="nav-link btn btn-link">
                                         <i
                                             aria-hidden="true"
                                             style={{ width: 32, textAlign: 'center' }}
@@ -29,7 +29,7 @@ class NavMenuView extends React.Component<NavMenuViewProps> {
                                             </Link>
                                         </span>
                                         <i className="arrow" />
-                                    </a>
+                                    </button>
                                 </li>);
                         })}
                     </ul>
