@@ -1,0 +1,1 @@
+export let webServiceUrl = 'http://localhost:3600';
