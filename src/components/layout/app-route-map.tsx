@@ -3,12 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 
 export const Loading = <div style={{ color: '#474747', fontWeight: 'bold', padding: '5px' }}>Loading...</div>;
 
-/* Dashboard Pages Imports */
+/* Code-splitting Imports */
 const Dashboard =  React.lazy(() => import('../dashboard/dashboard-view'));
 const CustomerPage = React.lazy(() => import('../admin/customer/index'));
 const EditCustomerPage = React.lazy(() => import('../admin/customer/index'));
 const CustomerListPage = React.lazy(() => import('../admin/customer-list/index'));
-
 
 
 class AppRouteMap extends React.Component {
