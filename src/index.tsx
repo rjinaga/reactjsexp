@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppContainer from './app2';
+import AppContainer from './app';
 import axiosGlobalConfig from './config/axios-config';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
