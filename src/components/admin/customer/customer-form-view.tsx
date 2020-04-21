@@ -46,6 +46,7 @@ class CustomerFormView extends React.Component<CustomerFormViewProps, CustomerFo
                                 value={this.state.name}
                                 onChange={(e): void => this.handleEvent(e)}
                             />
+                            {this.state.name === 'test' && <strong>Yes Typed as expected</strong>}
                         </div>
                     </div>
                     <div className="row">
@@ -83,6 +84,7 @@ class CustomerFormView extends React.Component<CustomerFormViewProps, CustomerFo
 
 
     private handleEvent(event: any) {
+        
         const name = event.target.name;
         const value = event.target.value;
         this.setState({ [name]: value } as any);

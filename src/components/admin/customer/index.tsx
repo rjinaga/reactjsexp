@@ -4,7 +4,7 @@ import CustomerFormView from './customer-form-view';
 import { Customer } from '../../../models/customer/customer';
 import * as CustomerApi from '../../../services/customer-api';
 import ApplicationState from '../../../store/application-state';
-import { GET_CUSTOMER_INFO } from '../../../store/customer-reducer';
+import { GET_CUSTOMER_INFO, CLEAR_CUSTOMER_INFO } from '../../../store/customer-reducer';
 import { Dispatch } from '../../../types/common';
 
 
@@ -27,7 +27,7 @@ const editCustomer = (name: string) => {
 
 const clearStore = () => {
     return (dispatch: Dispatch) => {
-        dispatch({type: GET_CUSTOMER_INFO});
+        dispatch({type: CLEAR_CUSTOMER_INFO});
     };
 };
 

@@ -7,12 +7,12 @@ class CustomerListView extends React.Component<CustomerListViewProps, {customers
     constructor(props: CustomerListViewProps) {
         super(props);
         this.state = {customers: []};
-
-        //Event Handler's
-        this.getCustomerList = this.getCustomerList.bind(this);
     }
-    componentDidMount() {
-        this.getCustomerList();
+    async componentDidMount() {
+        const customers = await this.props.getCustomers({});
+        if (customers) {
+            this.setState({customers});
+        }
     }
     render() {
         return (
@@ -60,12 +60,7 @@ class CustomerListView extends React.Component<CustomerListViewProps, {customers
         );
     }
 
-    private async getCustomerList() {
-        let customers = await this.props.getCustomers({});
-        if (customers) {
-            this.setState({customers});
-        }
-    }
+   
 }
 
 export default CustomerListView;
