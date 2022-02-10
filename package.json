@@ -33,7 +33,7 @@
     "react-scripts": "3.4.1",
     "react-test-renderer": "^16.13.1",
     "typescript": "^3.7.5",
-    "node-sass": "^4.13.1"
+    "node-sass": "^7.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
